@@ -1,16 +1,186 @@
-# React + Vite
+QuizGen AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An intelligent React-based quiz generator that transforms documents, topics, coding languages, or aptitude areas into interactive quizzes in seconds. Built with modern UI, real-time state management, and a seamless test-taking experience.
 
-Currently, two official plugins are available:
+<img width="1919" height="938" alt="Screenshot 2025-11-16 205540" src="https://github.com/user-attachments/assets/fe383bf4-ee74-4f3a-9652-163e97d354e8" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+🚀 Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+QuizGen AI is designed to help learners, educators, and developers generate quizzes instantly. Whether you upload a document, type a topic, or select a coding category — the system generates structured questions and provides a complete testing flow with timer, navigation palette, review marking, result analytics, and history tracking.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⭐ Key Features
+
+Quiz Generation
+
+Generate quizzes from uploaded files (PDF, DOCX, TXT)
+
+Create topic-based quizzes instantly
+
+Built-in coding language challenges
+
+Configurable question types (MCQ, True/False, Fill-in-the-blank, Short Answer)
+
+Custom difficulty levels and question count
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 How It Works
+1. Generate Quiz
+
+Upload a file
+
+Enter a topic
+
+Select a coding language
+
+Choose difficulty, question types, and count
+
+Start the test
+
+2. Take the Test
+
+Read questions with clean typography
+
+Select or type answers
+
+Use palette for navigation
+
+Mark questions for review
+
+Keep track of time
+
+3. Analyze Results
+
+Check accuracy, score, wrong answers, time spent
+
+View full breakdown of each question
+
+See performance charts
+
+Access complete test history
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Test Experience
+
+Clean, distraction-free test UI
+
+Live timer and progress tracking
+
+Question palette with answered / review / pending indicators
+
+Mark questions for review
+
+Smooth navigation between questions
+
+Submit confirmation modal with summary
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Result & Analytics
+
+Detailed accuracy, score, and time analysis
+
+Visual bar charts for Correct, Wrong, Total
+
+Per-question breakdown with correctness highlights
+
+Saved history of all completed tests
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+User System
+
+Login and Signup UI (local session-based)
+
+Profile dashboard with:
+
+Tests taken
+
+Average accuracy
+
+Total correct answers
+
+Time spent learning
+
+Recent activity
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UI & Personalization
+
+Dark mode support
+
+Multiple theme colors (Indigo, Blue, Purple, Emerald, Rose, Amber)
+
+Elegant animations & smooth transitions
+
+Fully responsive across devices
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🛠 Tech Stack
+Frontend
+
+React.js (Hooks + Context)
+
+Tailwind CSS
+
+Vite
+
+lucide-react Icons
+
+Architecture
+
+Context API for global state
+
+Modular, reusable UI components
+
+Mock question generator (replaceable with real AI/ML backend)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Installation & Setup
+
+Clone the repo
+
+    git clone https://github.com/<your-username>/quizgen-ai.git
+    cd quizgen-ai
+
+Install dependencies
+
+    npm install
+    # or
+    yarn
+
+Run the development server
+
+    npm run dev
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📬 Contact
+
+Author: Venkata Narendra Mallela
+
+Email: mallelanarendra88@gmail.com
+
+LinkedIn: https://www.linkedin.com/in/venkata-narendra-m-40a11b226/
+
+
+
+
+
+
+
+
+
+
+
+
