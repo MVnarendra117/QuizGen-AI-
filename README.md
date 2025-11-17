@@ -4,6 +4,8 @@ An intelligent React-based quiz generator that transforms documents, topics, cod
 
 <img width="1919" height="938" alt="Screenshot 2025-11-16 205540" src="https://github.com/user-attachments/assets/fe383bf4-ee74-4f3a-9652-163e97d354e8" />
 
+Live Preview - https://mellow-starship-428806.netlify.app/
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
