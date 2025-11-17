@@ -57,6 +57,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Grid,
+  Menu, // Added Menu icon for mobile
 } from "lucide-react";
 
 // --- 1. HELPERS & CONFIG ---
@@ -287,97 +288,213 @@ const useTest = () => useContext(TestContext);
 
 const Navbar = ({ currentPage, navigate }) => {
   const { user, setUser, isDarkMode, setIsDarkMode, theme } = useTest();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleMobileNav = (page) => {
+    navigate(page);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <nav className="flex items-center justify-between px-6 py-4 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-300">
-      <div
-        className="flex items-center gap-2 cursor-pointer group"
-        onClick={() => navigate("home")}
-      >
+    <>
+      <nav className="flex items-center justify-between px-6 py-4 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-300">
         <div
-          className={`${theme.primary} p-1.5 rounded-lg shadow-lg transition-transform group-hover:scale-105`}
+          className="flex items-center gap-2 cursor-pointer group"
+          onClick={() => navigate("home")}
         >
-          <Upload size={20} className="text-white" />
+          <div
+            className={`${theme.primary} p-1.5 rounded-lg shadow-lg transition-transform group-hover:scale-105`}
+          >
+            <Upload size={20} className="text-white" />
+          </div>
+          <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+            QuizGen<span className={`${theme.text} ${theme.textDark}`}>AI</span>
+          </span>
         </div>
-        <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
-          QuizGen<span className={`${theme.text} ${theme.textDark}`}>AI</span>
-        </span>
-      </div>
-      <div className="flex items-center gap-4 md:gap-6">
-        <div className="hidden md:flex items-center gap-1 bg-gray-100 dark:bg-zinc-900 p-1 rounded-xl border border-gray-200 dark:border-zinc-800">
-          <button
-            onClick={() => navigate("home")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              currentPage === "home"
-                ? `bg-white dark:bg-zinc-800 ${theme.text} ${theme.textDark} shadow-sm`
-                : "text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            }`}
-          >
-            <Home size={16} /> Home
-          </button>
-          <button
-            onClick={() => navigate("dashboard")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              currentPage === "dashboard"
-                ? `bg-white dark:bg-zinc-800 ${theme.text} ${theme.textDark} shadow-sm`
-                : "text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            }`}
-          >
-            <FileText size={16} /> Tests
-          </button>
-          <button
-            onClick={() => navigate("history")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              currentPage === "history"
-                ? `bg-white dark:bg-zinc-800 ${theme.text} ${theme.textDark} shadow-sm`
-                : "text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            }`}
-          >
-            <History size={16} /> History
-          </button>
-        </div>
-        <button
-          onClick={() => navigate("contact")}
-          className={`hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-            currentPage === "contact"
-              ? `${theme.text} ${theme.textDark}`
-              : `text-gray-700 dark:text-gray-400 hover:${
-                  theme.text
-                } dark:hover:${theme.textDark.split(":")[1]}`
-          }`}
-        >
-          <Mail size={18} />
-        </button>
-        <button
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          className={`p-2.5 rounded-full bg-gray-100 dark:bg-zinc-900 text-gray-700 dark:text-gray-400 hover:${theme.text} dark:hover:text-white transition-colors ring-1 ring-gray-200 dark:ring-zinc-800`}
-        >
-          {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-        {!user ? (
-          <button
-            onClick={() => navigate("login")}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${theme.primary} ${theme.hover} text-white shadow-lg`}
-          >
-            <LogIn size={18} /> Login
-          </button>
-        ) : (
-          <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4 md:gap-6">
+          <div className="hidden md:flex items-center gap-1 bg-gray-100 dark:bg-zinc-900 p-1 rounded-xl border border-gray-200 dark:border-zinc-800">
             <button
-              onClick={() => navigate("profile")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold ${theme.text} bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors`}
+              onClick={() => navigate("home")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                currentPage === "home"
+                  ? `bg-white dark:bg-zinc-800 ${theme.text} ${theme.textDark} shadow-sm`
+                  : "text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              }`}
             >
-              <User size={18} /> Profile
+              <Home size={16} /> Home
             </button>
             <button
-              onClick={() => setUser(null)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-500/10 hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors border border-red-200 dark:border-red-500/20"
+              onClick={() => navigate("dashboard")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                currentPage === "dashboard"
+                  ? `bg-white dark:bg-zinc-800 ${theme.text} ${theme.textDark} shadow-sm`
+                  : "text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              }`}
             >
-              <LogOut size={18} />
+              <FileText size={16} /> Tests
+            </button>
+            <button
+              onClick={() => navigate("history")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                currentPage === "history"
+                  ? `bg-white dark:bg-zinc-800 ${theme.text} ${theme.textDark} shadow-sm`
+                  : "text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              }`}
+            >
+              <History size={16} /> History
             </button>
           </div>
-        )}
-      </div>
-    </nav>
+          <button
+            onClick={() => navigate("contact")}
+            className={`hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              currentPage === "contact"
+                ? `${theme.text} ${theme.textDark}`
+                : `text-gray-700 dark:text-gray-400 hover:${
+                    theme.text
+                  } dark:hover:${theme.textDark.split(":")[1]}`
+            }`}
+          >
+            <Mail size={18} />
+          </button>
+          <button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            className={`p-2.5 rounded-full bg-gray-100 dark:bg-zinc-900 text-gray-700 dark:text-gray-400 hover:${theme.text} dark:hover:text-white transition-colors ring-1 ring-gray-200 dark:ring-zinc-800`}
+          >
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="p-2.5 rounded-full bg-gray-100 dark:bg-zinc-900 text-gray-700 dark:text-gray-400 ring-1 ring-gray-200 dark:ring-zinc-800 md:hidden"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <Menu size={18} />
+          </button>
+
+          {/* Desktop Login/Profile Buttons */}
+          {!user ? (
+            <button
+              onClick={() => navigate("login")}
+              className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${theme.primary} ${theme.hover} text-white shadow-lg`}
+            >
+              <LogIn size={18} /> Login
+            </button>
+          ) : (
+            <div className="hidden md:flex items-center gap-3">
+              <button
+                onClick={() => navigate("profile")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold ${theme.text} bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors`}
+              >
+                <User size={18} /> Profile
+              </button>
+              <button
+                onClick={() => setUser(null)}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-500/10 hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors border border-red-200 dark:border-red-500/20"
+              >
+                <LogOut size={18} />
+              </button>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div
+            className="fixed top-4 right-4 w-[calc(100vw-32px)] max-w-sm bg-white dark:bg-zinc-900 p-6 rounded-3xl shadow-2xl border border-gray-200 dark:border-zinc-800 animate-in slide-in-from-top-4 duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-6">
+              <span className="text-lg font-bold text-gray-900 dark:text-white tracking-tight">
+                Menu
+              </span>
+              <button
+                className="p-2 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-400"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <button
+                onClick={() => handleMobileNav("home")}
+                className={`flex w-full items-center gap-3 px-4 py-3 rounded-lg text-base font-bold transition-all ${
+                  currentPage === "home"
+                    ? `${theme.bgLight} dark:bg-zinc-800 ${theme.text} ${theme.textDark}`
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800"
+                }`}
+              >
+                <Home size={20} /> Home
+              </button>
+              <button
+                onClick={() => handleMobileNav("dashboard")}
+                className={`flex w-full items-center gap-3 px-4 py-3 rounded-lg text-base font-bold transition-all ${
+                  currentPage === "dashboard"
+                    ? `${theme.bgLight} dark:bg-zinc-800 ${theme.text} ${theme.textDark}`
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800"
+                }`}
+              >
+                <FileText size={20} /> Tests
+              </button>
+              <button
+                onClick={() => handleMobileNav("history")}
+                className={`flex w-full items-center gap-3 px-4 py-3 rounded-lg text-base font-bold transition-all ${
+                  currentPage === "history"
+                    ? `${theme.bgLight} dark:bg-zinc-800 ${theme.text} ${theme.textDark}`
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800"
+                }`}
+              >
+                <History size={20} /> History
+              </button>
+              <button
+                onClick={() => handleMobileNav("contact")}
+                className={`flex w-full items-center gap-3 px-4 py-3 rounded-lg text-base font-bold transition-all ${
+                  currentPage === "contact"
+                    ? `${theme.bgLight} dark:bg-zinc-800 ${theme.text} ${theme.textDark}`
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-800"
+                }`}
+              >
+                <Mail size={20} /> Contact
+              </button>
+
+              <div className="pt-4 border-t border-gray-100 dark:border-zinc-800">
+                {!user ? (
+                  <button
+                    onClick={() => handleMobileNav("login")}
+                    className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all ${theme.primary} ${theme.hover} text-white shadow-lg`}
+                  >
+                    <LogIn size={18} /> Login
+                  </button>
+                ) : (
+                  <div className="space-y-3">
+                    <button
+                      onClick={() => handleMobileNav("profile")}
+                      className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-bold ${theme.text} ${theme.textDark} bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors`}
+                    >
+                      <User size={18} /> Profile
+                    </button>
+                    <button
+                      onClick={() => {
+                        setUser(null);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-500/10 hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors border border-red-200 dark:border-red-500/20"
+                    >
+                      <LogOut size={18} /> Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
@@ -2289,7 +2406,7 @@ const LoginPage = ({ onLogin }) => {
   );
 };
 
-// --- Main App ---
+// --- 5. MAIN APP ---
 const AppContent = () => {
   const {
     user,
